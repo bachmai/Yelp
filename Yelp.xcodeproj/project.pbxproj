@@ -15,11 +15,12 @@
 		480C539527ED19D300F5D819 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C539427ED19D300F5D819 /* HomeViewController.swift */; };
 		480C539727ED1DEF00F5D819 /* BusinessCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C539627ED1DEF00F5D819 /* BusinessCollectionViewCell.swift */; };
 		480C539C27ED245200F5D819 /* YelpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C539B27ED245200F5D819 /* YelpManager.swift */; };
-		480C539F27ED268800F5D819 /* BusinessRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C539E27ED268800F5D819 /* BusinessRequest.swift */; };
-		480C53A227ED315600F5D819 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 480C53A127ED315600F5D819 /* SDWebImage */; };
+		480C539F27ED268800F5D819 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C539E27ED268800F5D819 /* NetworkConstants.swift */; };
 		480C53A527ED46CB00F5D819 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C53A427ED46CB00F5D819 /* UIViewControllerExt.swift */; };
 		480C53A727ED5A8600F5D819 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C53A627ED5A8600F5D819 /* DetailsViewController.swift */; };
 		480C53AA27ED6B6300F5D819 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C53A927ED6B6300F5D819 /* PhotoCollectionViewCell.swift */; };
+		480C53B027EE3C0A00F5D819 /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C53AF27EE3C0A00F5D819 /* UIImageViewExt.swift */; };
+		487A749427EE472A00B49239 /* YelpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487A749327EE472A00B49239 /* YelpResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +34,12 @@
 		480C539427ED19D300F5D819 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		480C539627ED1DEF00F5D819 /* BusinessCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCollectionViewCell.swift; sourceTree = "<group>"; };
 		480C539B27ED245200F5D819 /* YelpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpManager.swift; sourceTree = "<group>"; };
-		480C539E27ED268800F5D819 /* BusinessRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessRequest.swift; sourceTree = "<group>"; };
+		480C539E27ED268800F5D819 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		480C53A427ED46CB00F5D819 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		480C53A627ED5A8600F5D819 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		480C53A927ED6B6300F5D819 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		480C53AF27EE3C0A00F5D819 /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
+		487A749327EE472A00B49239 /* YelpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				480C53A227ED315600F5D819 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				480C539427ED19D300F5D819 /* HomeViewController.swift */,
-				480C539B27ED245200F5D819 /* YelpManager.swift */,
 				480C539627ED1DEF00F5D819 /* BusinessCollectionViewCell.swift */,
 			);
 			path = Home;
@@ -97,7 +98,9 @@
 		480C539D27ED266800F5D819 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				480C539E27ED268800F5D819 /* BusinessRequest.swift */,
+				480C539E27ED268800F5D819 /* NetworkConstants.swift */,
+				480C539B27ED245200F5D819 /* YelpManager.swift */,
+				487A749327EE472A00B49239 /* YelpResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -106,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				480C53A427ED46CB00F5D819 /* UIViewControllerExt.swift */,
+				480C53AF27EE3C0A00F5D819 /* UIImageViewExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -136,7 +140,6 @@
 			);
 			name = Yelp;
 			packageProductDependencies = (
-				480C53A127ED315600F5D819 /* SDWebImage */,
 			);
 			productName = Yelp;
 			productReference = 480C537D27ED18B800F5D819 /* Yelp.app */;
@@ -167,7 +170,6 @@
 			);
 			mainGroup = 480C537427ED18B800F5D819;
 			packageReferences = (
-				480C53A027ED315600F5D819 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 480C537E27ED18B800F5D819 /* Products */;
 			projectDirPath = "";
@@ -197,13 +199,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				480C539727ED1DEF00F5D819 /* BusinessCollectionViewCell.swift in Sources */,
+				487A749427EE472A00B49239 /* YelpResponse.swift in Sources */,
 				480C539C27ED245200F5D819 /* YelpManager.swift in Sources */,
 				480C538127ED18B800F5D819 /* AppDelegate.swift in Sources */,
-				480C539F27ED268800F5D819 /* BusinessRequest.swift in Sources */,
+				480C539F27ED268800F5D819 /* NetworkConstants.swift in Sources */,
 				480C538327ED18B800F5D819 /* SceneDelegate.swift in Sources */,
 				480C53AA27ED6B6300F5D819 /* PhotoCollectionViewCell.swift in Sources */,
 				480C53A527ED46CB00F5D819 /* UIViewControllerExt.swift in Sources */,
 				480C539527ED19D300F5D819 /* HomeViewController.swift in Sources */,
+				480C53B027EE3C0A00F5D819 /* UIImageViewExt.swift in Sources */,
 				480C53A727ED5A8600F5D819 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,25 +432,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		480C53A027ED315600F5D819 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		480C53A127ED315600F5D819 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 480C53A027ED315600F5D819 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 480C537527ED18B800F5D819 /* Project object */;
 }

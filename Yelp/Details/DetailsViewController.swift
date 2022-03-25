@@ -6,12 +6,13 @@
 //
 
 import UIKit
-import SDWebImage
 
 class DetailsViewController: UIViewController {
     @IBOutlet weak var businessNameLabel: UILabel!
+    @IBOutlet weak var isOpenNowLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var photosCollectionView: UICollectionView!
     
@@ -30,7 +31,7 @@ class DetailsViewController: UIViewController {
         guard let businessID = businessID else {
             return
         }
-        YelpManager.getBusinessDetails(bizID: businessID) { businessDetails, errorMsg in
+        YelpManager.shared.getBusinessDetails(bizID: businessID) { businessDetails, errorMsg in
             DispatchQueue.main.async { [weak self] in
                 if let errorMsg = errorMsg {
                     self?.showAlert(title: "Business Details", message: errorMsg)
@@ -74,9 +75,22 @@ class DetailsViewController: UIViewController {
     
     private func setupUI(with bizDetails: BusinessDetailsResponse) {
         businessNameLabel.text = bizDetails.name
+        if let isOpenNow = bizDetails.hours.first?.is_open_now, isOpenNow {
+            isOpenNowLabel.text = "Open"
+            isOpenNowLabel.textColor = .green
+        } else {
+            isOpenNowLabel.text = "Closed"
+            isOpenNowLabel.textColor = .red
+        }
         addressLabel.text = bizDetails.location.display_address?.joined(separator: "\n")
         phoneNumberLabel.text = bizDetails.display_phone
+        if let price = bizDetails.price {
+            priceLabel.text = "Price range: \(price)"
+        }
         ratingLabel.text = "Rating: \(bizDetails.rating)/5"
+        if let reviewCount = bizDetails.review_count {
+            ratingLabel.text = "Rating: \(bizDetails.rating)/5 (\(reviewCount) reviews)"
+        }
         if let photoUrls = bizDetails.photos {
             downloadPhotos(photoUrls: photoUrls)
         }

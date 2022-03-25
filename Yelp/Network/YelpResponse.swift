@@ -1,20 +1,11 @@
 //
-//  BusinessRequest.swift
+//  YelpResponse.swift
 //  Yelp
 //
-//  Created by Bach Mai on 3/24/22.
+//  Created by Bach Mai on 3/25/22.
 //
 
-struct YelpTokenConstants {
-    static let clientID = "WDfPljaLr572MsO7GCHDAw"
-    static let apiKey = "ySuNrwI9UgAMW0FLOhfzBVNoxtLtzV2RzdxPRQGQ37EJZKHumDnZH79vsJ-a1RA_4mrID3tie67FQxB28idVFdq07rDZy9Wr_J0NBLTMYG-ALLFK4-_UU5g1wBI9YnYx"
-    static let headers = ["Authorization": "Bearer " + YelpTokenConstants.apiKey]
-}
-
-struct NetworkURLConstants {
-    static let businessSearch = "https://api.yelp.com/v3/businesses/search"
-    static let businessDetails = "https://api.yelp.com/v3/businesses/"
-}
+import Foundation
 
 struct BusinessSearchResponse: Decodable {
     var total: Int
@@ -51,8 +42,13 @@ struct BusinessDetailsResponse: Decodable {
     var photos: [String]?
     var price: String?
     var location: LocationDetailsObj
+    var hours: [OpeningHoursObj]
     
     struct LocationDetailsObj: Decodable {
         var display_address: [String]?
+    }
+    
+    struct OpeningHoursObj: Decodable {
+        var is_open_now: Bool?
     }
 }

@@ -10,7 +10,8 @@ import Foundation
 
 
 class YelpManager {
-    static func searchBusiness(term: String, completion: @escaping([BusinessDetailObj]?, String?) -> Void) {
+    static let shared = YelpManager()
+    func searchBusiness(term: String, completion: @escaping([BusinessDetailObj]?, String?) -> Void) {
         var components = URLComponents(string: NetworkURLConstants.businessSearch)!
         components.queryItems = [
         URLQueryItem(name: "term", value: term),
@@ -47,7 +48,7 @@ class YelpManager {
         task.resume()
     }
     
-    static func getBusinessDetails(bizID: String, completion: @escaping(BusinessDetailsResponse?, String?) -> Void) {
+    func getBusinessDetails(bizID: String, completion: @escaping(BusinessDetailsResponse?, String?) -> Void) {
         guard let url = URL(string: "\(NetworkURLConstants.businessDetails)\(bizID)") else {
             completion(nil, "Invalid URL")
             return

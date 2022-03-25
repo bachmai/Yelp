@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class HomeViewController: UIViewController {
     internal enum SortMode : String {
@@ -19,9 +18,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var sortButton: UIButton!
     
-    var searchTerm = "Italian"
+    var searchTerm = "Pho"
     var sortMode = SortMode.AtoZ
     var businessList: [BusinessDetailObj] = []
+    let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,6 @@ class HomeViewController: UIViewController {
         // hides the keyboard when collection view is being used
         collectionView.keyboardDismissMode = .onDrag
         // add refresh control to the collection view
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(reloadData), for: .valueChanged)
         collectionView.refreshControl = refreshControl
         // sort button
@@ -52,8 +51,9 @@ class HomeViewController: UIViewController {
     
     // MARK: Network calls
     private func searchBusiness(term: String) {
-        YelpManager.searchBusiness(term: term) { businessList, errorMsg in
+        YelpManager.shared.searchBusiness(term: term) { businessList, errorMsg in
             DispatchQueue.main.async { [weak self] in
+                self?.refreshControl.endRefreshing()
                 if let errorMsg = errorMsg {
                     self?.showAlert(title: "Search Business", message: errorMsg)
                 } else if let businessList = businessList {
@@ -98,7 +98,6 @@ class HomeViewController: UIViewController {
             }
             collectionView.reloadData()
         }
-        
     }
 }
 
@@ -114,7 +113,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.rating.text = "Rating: \(businessList[indexPath.row].rating)/5"
         if let imageUrlstring = businessList[indexPath.row].image_url,
            let imageUrl = URL(string: imageUrlstring) {
-            cell.mainImageView.sd_setImage(with: imageUrl, completed: nil)
+//            cell.mainImageView.sd_setImage(with: imageUrl, completed: nil)
+            cell.mainImageView.setImage(with: imageUrl)
         } else {
             cell.mainImageView.image = UIImage(named: "product-placeholder")
         }
